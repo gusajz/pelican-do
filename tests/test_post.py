@@ -78,7 +78,7 @@ class PostRstTest(PostTest):
     content_dir = os.path.join(self.cwd, 'content', category)
     article_path = os.path.join(content_dir, '2012-09-16-a-post-name.rst')
 
-    self.assertFalse(os.path.isdir(content_dir))
+    self.assertTrue(os.path.isdir(content_dir))
     self.assertTrue(os.path.isfile(article_path))
 
     with open(article_path, 'r') as f:
