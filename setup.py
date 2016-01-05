@@ -13,8 +13,14 @@ config = {
   'version': '0.1',
   'install_requires': [
     'click==6.2',
-    'Jinja2==2.8'
+    'Jinja2==2.8',
+    'awesome-slugify==1.6.5'
   ],
+  'extras_require': {
+    'development': [
+        'nose'
+    ],
+  },
   'packages': ['pelican_do'],
   'scripts': [],
   'name': 'pelican-do',
