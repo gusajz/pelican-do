@@ -2,5 +2,10 @@ language: python
 python:
  - "2.7"
 
-install: "python setup.py install"
-script: "python -m unittest discover"
+before_script: mkdir -p shippable/testresults
+
+install:
+  -"python setup.py install"
+
+script:
+  - py.test --junitxml=shippable/testresults/tests.xml
