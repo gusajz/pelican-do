@@ -6,47 +6,84 @@ import textwrap
 from pelican_do.lib.filters import *
 import slugify
 
+import os
+import errno
+
+class PostError(Exception):
+    pass
+
 templates = {
   'rst': textwrap.dedent('''
     {{title|rst_title}}
     :date: {{date|pelican_datetime}}
-    :modified: {{date|pelican_datetime}}
+    {% if tags %}
     :tags: {{tags|join(', ')}}
+    {% endif %}
     :category: {{category}}
     :slug: {{slug}}
-    :authors: Alexis Metaireau, Conan Doyle
+    {% if authors %}
+    :authors: {{authors|join(', ')}}
+    {% endif %}
+    {% if summary %}
     :summary: {{summary}}
+    {% endif %}
   '''),
 
   'md': textwrap.dedent('''
     Title: {{title}}
     Date: {{date|pelican_datetime}}
-    Modified: {{date|pelican_datetime}}
-    Category: Python
+    Category: {{category}}
+    {% if tags %}
     Tags: {{tags|join(', ')}}
+    {% endif %}
     Slug: {{slug}}
-    Authors: Alexis Metaireau, Conan Doyle
+    {% if authors %}
+    Authors: {{authors|join(', ')}}
+    {% endif %}
+    {% if summary %}
     Summary: {{summary}}
+    {% endif %}
 
     This is the content of my super blog post.
   ''')
 }
 
-def post(today, name, format, title, category, tags, summary):
+def post(today, name, format, title, category, authors, tags, summary):
+
+  if not os.path.isfile('pelicanconf.py'):
+    raise PostError('"pelicanconf.py" must exist in current directory')
+
+  if not os.path.isdir('content'):
+    raise PostError('"content" directory does not exist')
+
   title = title or name
 
   jinja_environment = Environment()
   jinja_environment.filters['rst_title'] = rst_title
   jinja_environment.filters['pelican_datetime'] = pelican_datetime
 
-  # 2010-10-03 10:20
   template = jinja_environment.from_string(templates[format])
-# >>> template.render(name='John Doe')
+#
+  slug = slugify.slugify(title, to_lower=True)
 
-  filename = '%s-%s.%s' % (today.strftime('%Y-%m-%d'), name, format)
+  filename = '%s-%s.%s' % (today.strftime('%Y-%m-%d'), slugify.slugify(name, to_lower=True), format)
 
-  slug = slugify.slugify(title)
+  article_path = os.path.join('content', category)
 
-  print template.render(title=title, date=today, tags=tags, slug=slug, summary=summary)
+  try:
+    os.makedirs(article_path)
 
-  print 'creating %s' % filename
+  except OSError as exception:
+    if exception.errno != errno.EEXIST:
+        raise
+
+  with open(os.path.join(article_path, filename), 'w') as f:
+    f.write(template.render(
+      title=title,
+      date=today,
+      tags=tags,
+      slug=slug,
+      category=category,
+      summary=summary,
+      authors=authors))
+

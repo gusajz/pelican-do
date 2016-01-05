@@ -14,11 +14,11 @@ config = {
   'install_requires': [
     'click==6.2',
     'Jinja2==2.8',
-    'awesome-slugify==1.6.5'
+    'awesome-slugify==1.6.5',
+    'testfixtures==4.7.0'
   ],
   'extras_require': {
     'development': [
-        'nose'
     ],
   },
   'packages': ['pelican_do'],
