@@ -3,7 +3,7 @@ from jinja2 import Environment
 import datetime
 import textwrap
 
-from pelican_do.lib.filters import *
+from pelican_do.utils.filters import *
 import slugify
 
 import os
