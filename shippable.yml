@@ -2,7 +2,10 @@ language: python
 python:
  - "2.7"
 
-before_script: mkdir -p shippable/testresults
+before_script:
+  - mkdir -p shippable/testresults
+  - mkdir -p shippable/codecoverage
+  - printf '[xml]\noutput = shippable/codecoverage/coverage.xml\n' > .coveragerc
 
 install:
   - python setup.py install
