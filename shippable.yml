@@ -11,4 +11,4 @@ install:
   - python setup.py install
 
 script:
-  - py.test --junitxml=shippable/testresults/tests.xml --cov=pelican_do --cov-report= tests/
+  - py.test --junitxml=shippable/testresults/tests.xml --cov=pelican_do --cov-report=xml tests/
