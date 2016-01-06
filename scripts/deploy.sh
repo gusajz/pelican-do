@@ -10,4 +10,8 @@ then
   exit
 fi
 
+echo 'Tagging'
 git tag -a $VERSION
+
+echo 'Uploading'
+python setup.py register -r pypi
