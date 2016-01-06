@@ -24,7 +24,7 @@ config = {
     'pytest-runner',
   ],
   'tests_require': [
-    'pytest==2.8.5',
+    'pytest>=2.6.4',
     'pytest-cov==2.2.0'
   ],
   'packages': ['pelican_do'],
