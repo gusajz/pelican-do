@@ -7,8 +7,10 @@ before_script:
   - mkdir -p shippable/codecoverage
   - printf '[xml]\noutput = shippable/codecoverage/coverage.xml\n' > .coveragerc
 
-install:
-  - python setup.py install
-
 script:
-  - py.test --junitxml=shippable/testresults/tests.xml --cov=pelican_do --cov-report=xml tests/
+  - python setup.py test --addopts "--junitxml=shippable/testresults/tests.xml --cov=pelican_do --cov-report=xml tests/"
+
+# install:
+  # - python setup.py install
+
+

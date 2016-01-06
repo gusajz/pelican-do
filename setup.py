@@ -15,12 +15,18 @@ config = {
     'click==6.2',
     'Jinja2==2.8',
     'awesome-slugify==1.6.5',
-    'testfixtures==4.7.0'
   ],
   'extras_require': {
     'development': [
     ],
   },
+  'setup_requires': [
+    'pytest-runner',
+  ],
+  'tests_require': [
+    'pytest==2.8.5',
+    'pytest-cov==2.2.0'
+  ],
   'packages': ['pelican_do'],
   'scripts': [],
   'name': 'pelican-do',
