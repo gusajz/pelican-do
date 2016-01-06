@@ -13,5 +13,11 @@ fi
 echo 'Tagging'
 git tag -a $VERSION
 
+if [ $? -eq 0 ]
+then
+  echo "Cannot tag"
+  exit
+fi
+
 echo 'Uploading'
-python setup.py register -r pypi
+python setup.py sdist upload -r pypi
