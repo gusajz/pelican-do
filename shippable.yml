@@ -3,6 +3,7 @@ python:
  - "2.7"
 
 before_script:
+  - pip uninstall pytest
   - mkdir -p shippable/testresults
   - mkdir -p shippable/codecoverage
   - printf '[xml]\noutput = shippable/codecoverage/coverage.xml\n' > .coveragerc
