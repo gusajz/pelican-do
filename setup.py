@@ -1,12 +1,12 @@
 try:
-  from setuptools import setup
+  from setuptools import setup, find_packages
 except ImportError:
-  from distutils.core import setup
+  from distutils.core import setup, find_packages
 
 
 config = {
   'name': 'pelican-do',
-  'version': '0.1.0',
+  'version': '0.1.1-alpha1',
   'description': 'Commands to automate common pelican tasks',
   'long_description': open('README.rst').read(),
   'license': 'MIT',
@@ -41,7 +41,7 @@ config = {
     'Topic :: Utilities',
     'Programming Language :: Python :: 2.7',
   ],
-  'packages': ['pelican_do'],
+  'packages': find_packages(),
   'scripts': [],
   'entry_points': {
     'console_scripts': ['pelican-do=pelican_do.main:main']
