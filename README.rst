@@ -1,6 +1,9 @@
 Pelican Do
 ==========
 
+.. image:: https://img.shields.io/shippable/568c1cac1895ca4474679707.svg
+    :alt: Build status
+
 Common tasks for pelican static site generator.
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
