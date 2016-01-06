@@ -3,8 +3,6 @@ try:
 except ImportError:
   from distutils.core import setup
 
-import pypandoc
-
 
 config = {
   'name': 'pelican-do',
