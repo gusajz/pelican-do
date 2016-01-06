@@ -12,7 +12,6 @@ fi
 
 echo 'Tagging'
 git tag -a $VERSION
-echo $?
 if [ $? -eq 0 ]
 then
   echo "Cannot tag"
