@@ -6,7 +6,7 @@ except ImportError:
 
 config = {
   'name': 'pelican-do',
-  'version': '0.1.1-alpha2',
+  'version': '0.1.1-alpha3',
   'description': 'Commands to automate common pelican tasks',
   'long_description': open('README.rst').read(),
   'license': 'MIT',
