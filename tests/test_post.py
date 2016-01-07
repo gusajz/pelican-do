@@ -140,7 +140,7 @@ class PostRstDefaultTest(PostTest):
 
       # title
       self.assertTrue(
-        'This is a title\n###############\n' in content
+        'This is a title\n###############\n\n' in content
       )
 
       self.assertTrue(
