@@ -21,4 +21,3 @@ Usage
 
     pelican-do post --help
 
-
