@@ -20,4 +20,3 @@ Usage
 .. code:: bash
 
     pelican-do post --help
-
