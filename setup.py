@@ -16,7 +16,7 @@ config = {
   'keywords': ['blog', 'pelican'],
   'install_requires': [
     'click==6.2',
-    'Jinja2==2.8',
+    'Jinja2==2.11.3',
     'awesome-slugify==1.6.5',
   ],
   'extras_require': {
